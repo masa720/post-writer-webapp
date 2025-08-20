@@ -3,6 +3,7 @@ import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 export const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: `blog/**/*.mdx`,
+  contentType: 'mdx',
   fields: {
     title: {
       type: 'string',
@@ -34,7 +35,11 @@ export const Post = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => `/${doc._raw.flattenedPath}`,
     },
+    slugAsParams: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.split('/').splice(1)[0],
     },
+  }
 }));
 
 export default makeSource({
