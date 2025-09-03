@@ -10,6 +10,8 @@ import { signIn } from "next-auth/react";
 
 export default function UserAuthForm() {
   const [isGithubLoading, setIsGithubLoading] = useState<boolean>(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false);
+
   return (
     <div className="grid gap-6">
       <form>
@@ -35,20 +37,37 @@ export default function UserAuthForm() {
         </div>
       </div>
 
-      <button
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={async () => {
-          setIsGithubLoading(true);
-          await signIn("github");
-        }}
-      >
-        {isGithubLoading ? (
-          <Icon.spinner className="mr-2 animate-spin" />
-        ) : (
-          <Icon.github className="mr-2" />
-        )}
-        Github
-      </button>
+      <div className="flex flex-col gap-3">
+        <button
+          className={cn(buttonVariants({ variant: "outline" }))}
+          onClick={async () => {
+            setIsGithubLoading(true);
+            await signIn("github");
+          }}
+        >
+          {isGithubLoading ? (
+            <Icon.spinner className="mr-2 animate-spin" />
+          ) : (
+            <Icon.github className="mr-2" />
+          )}
+          Github
+        </button>
+
+        <button
+          className={cn(buttonVariants({ variant: "outline" }))}
+          onClick={async () => {
+            setIsGoogleLoading(true);
+            await signIn("google");
+          }}
+        >
+          {isGoogleLoading ? (
+            <Icon.spinner className="mr-2 animate-spin" />
+          ) : (
+            <Icon.google className="mr-2" />
+          )}
+          Google
+        </button>
+      </div>
     </div>
   );
 }
