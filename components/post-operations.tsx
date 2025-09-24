@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Icon } from "./icon";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 interface PostOperationsProps {
   post: Pick<Post, "id" | "title">;
