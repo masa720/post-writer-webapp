@@ -11,11 +11,11 @@ export default function DashboardLayout({
   return (
     <div className="flex min-h-screen flex-col space-y-6">
       <header className="sticky top-0 z-40 border-b bg-background">
-        <div className="container flex h-16 items-center justify-between py-4">
+        <div className="container mx-auto flex h-16 items-center justify-between py-4">
           <MainNav items={dashboardConfig.mainNav} />
         </div>
       </header>
-      <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
+      <div className="container mx-auto grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
         <aside className="hidden md:flex w-[200px] flex-col">
           <DashboardNav items={dashboardConfig.sidebarNav} />
         </aside>
