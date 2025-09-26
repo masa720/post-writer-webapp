@@ -9,6 +9,12 @@ import Mdx from "@/components/mdx-component";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
+interface BlogPostPageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
 const getPostFromSlug = async (slug: string) => {
   const posts = allPosts.find((post) => post.slugAsParams === slug);
   return posts;
@@ -16,10 +22,9 @@ const getPostFromSlug = async (slug: string) => {
 
 export async function generateMetadata({
   params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const page = await getPostFromSlug(params.slug);
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const page = await getPostFromSlug(slug);
 
   if (!page) {
     return {};
@@ -49,9 +54,9 @@ export async function generateMetadata({
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const slug = params.slug;
+  const { slug } = await params;
   const post = await getPostFromSlug(slug);
 
   if (!post) {
