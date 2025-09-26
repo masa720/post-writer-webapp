@@ -67,7 +67,7 @@ export default function Editor({ post }: EditorProps) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {},
   } = useForm({
     resolver: zodResolver(postPathSchema),
   });

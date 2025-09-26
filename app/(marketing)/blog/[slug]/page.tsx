@@ -2,7 +2,7 @@ import { allPosts } from "@/.contentlayer/generated";
 import { format } from "date-fns";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Mdx from "@/components/mdx-component";
