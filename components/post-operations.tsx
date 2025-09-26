@@ -21,7 +21,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
-import { ca } from "zod/v4/locales";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -38,7 +37,7 @@ async function deletePost(postId: string) {
     return true;
   } catch (error) {
     toast.error("問題が発生しました", {
-      description: "記事の削除ができませんでした。もう一度お試しください。",
+      description: `記事の削除ができませんでした。もう一度お試しください。 ${error}`,
     });
   }
 }
